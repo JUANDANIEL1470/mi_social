@@ -40,7 +40,7 @@
   - QRCode.js (generación de QR)
   - Clipboard.js (copiar al portapapeles)
 
-- **👥 Público Objetivo
+- **👥 Público Objetivo **
 - 🎨 Creadores de contenido
 - 📱 Influencers
 - 💼 Profesionales
