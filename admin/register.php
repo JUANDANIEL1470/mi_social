@@ -85,7 +85,7 @@ include '../includes/header.php';
                 <label for="password">Contraseña</label>
                 <div class="password-container">
                     <input type="password" id="password" name="password" required>
-                    <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+                    <button type="button" class="toggle-password" aria-label="Mostrar contraseña" title="Mostrar/ocultar contraseña">
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
@@ -161,6 +161,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     password.addEventListener('input', validatePassword);
     confirmPassword.addEventListener('input', validatePassword);
+    
+    // Eliminamos el código del efecto de onda ya que ahora está en ripple.js
 });
 </script>
 

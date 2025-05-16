@@ -6,23 +6,15 @@ include 'includes/header.php';
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1 class="animated">Conecta todas tus redes en un solo lugar</h1>
-            <p class="subtitle animated delay-1">Mi Social te permite compartir todos tus enlaces importantes con una sola URL en tu biografía, perfecto para Instagram, TikTok, YouTube y más.</p>
+            <h1 class="animated">Conecta todas tus redes sociales en un solo lugar</h1>
+            <p class="animated delay-1">Crea tu página de perfil personalizada y comparte todos tus enlaces con un solo clic.</p>
             <div class="cta-buttons animated delay-2">
-                <?php if (isLoggedIn()): ?>
-                    <a href="perfil.php?user=<?php echo $_SESSION['username']; ?>" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Ver mi perfil
-                    </a>
-                    <a href="admin/dashboard.php" class="btn btn-outline">
-                        <i class="fas fa-cog"></i> Personalizar
-                    </a>
+                <?php if (!isLoggedIn()): ?>
+                    <a href="/mi_social/admin/login.php" class="btn btn-primary">Iniciar Sesión</a>
+                    <a href="/mi_social/admin/register.php" class="btn btn-outline">Registrarse</a>
                 <?php else: ?>
-                    <a href="admin/login.php?register=1" class="btn btn-primary">
-                        <i class="fas fa-user-plus"></i> Crear cuenta gratis
-                    </a>
-                    <a href="admin/login.php" class="btn btn-outline">
-                        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
-                    </a>
+                    <a href="/mi_social/admin/dashboard.php" class="btn btn-primary">Mi Dashboard</a>
+                    <a href="/mi_social/perfil.php?user=<?php echo htmlspecialchars($currentUser['username']); ?>" class="btn btn-outline">Ver Mi Perfil</a>
                 <?php endif; ?>
             </div>
         </div>

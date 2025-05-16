@@ -11,11 +11,12 @@ $currentUser = getCurrentUser($pdo);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/mi_social/assets/css/style.css">
+    <script src="/mi_social/assets/js/ripple.js" defer></script>
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <a href="index.php" class="logo">Mi Social</a>
+            <a href="/mi_social/index.php" class="logo">Mi Social</a>
             
             <!-- En header.php -->
             <nav class="nav">

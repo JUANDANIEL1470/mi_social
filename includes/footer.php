@@ -34,9 +34,9 @@
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="privacy.php">Política de Privacidad</a></li>
-                        <li><a href="terms.php">Términos de Servicio</a></li>
-                        <li><a href="cookies.php">Política de Cookies</a></li>
+                        <li><a href="/mi_social/privacy.php">Política de Privacidad</a></li>
+                        <li><a href="/mi_social/terms.php">Términos de Servicio</a></li>
+                        <li><a href="/mi_social/cookies.php">Política de Cookies</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

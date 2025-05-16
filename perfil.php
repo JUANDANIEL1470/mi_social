@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/config.php';
 
+// Agregar clase específica para la página de perfil
+$bodyClass = 'profile-page'; 
+
 $username = $_GET['user'] ?? '';
 if (empty($username)) {
     header('Location: index.php');
@@ -97,16 +100,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('.profile-link');
     links.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Solo prevenir el comportamiento por defecto si no hay URL o es inválida
             if (!this.getAttribute('href') || this.getAttribute('href') === '#' || this.getAttribute('href').indexOf('link=') === -1) {
                 e.preventDefault();
                 return;
             }
             
-            // Agregar clase de clic
             this.classList.add('clicked');
             
-            // Redirigir después de la animación
             setTimeout(() => {
                 if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
                     window.location.href = this.getAttribute('href');

@@ -50,8 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                         'samesite' => 'Lax'
                     ]);
                     
+                    // Actualizar token en la base de datos
                     $stmt = $pdo->prepare("UPDATE usuarios SET remember_token = ?, token_expiry = ? WHERE id = ?");
                     $stmt->execute([$token, date('Y-m-d H:i:s', $expiry), $user['id']]);
+                } else {
+                    // Limpiar tokens si no se seleccionó "Recuérdame"
+                    $stmt = $pdo->prepare("UPDATE usuarios SET remember_token = NULL, token_expiry = NULL WHERE id = ?");
+                    $stmt->execute([$user['id']]);
                 }
                 
                 // Redirigir al dashboard
@@ -70,6 +75,7 @@ $pageTitle = "Iniciar Sesión";
 include '../includes/header.php';
 ?>
 
+<!-- El resto del código HTML permanece igual -->
 <div class="auth-container">
     <div class="auth-card">
         <h2>Iniciar Sesión</h2>
@@ -98,7 +104,7 @@ include '../includes/header.php';
                 <label for="password">Contraseña</label>
                 <div class="password-container">
                     <input type="password" id="password" name="password" required autocomplete="current-password">
-                    <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+                    <button type="button" class="toggle-password" aria-label="Mostrar contraseña" title="Mostrar/ocultar contraseña">
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
@@ -133,7 +139,7 @@ include '../includes/header.php';
         </div>
         
         <div class="auth-switch">
-            ¿No tienes una cuenta? <a href="login.php?register=1">Regístrate</a>
+            ¿No tienes una cuenta? <a href="register.php">Regístrate</a>
         </div>
     </div>
 </div>
@@ -148,21 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
         password.setAttribute('type', type);
         this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
-    });
-    
-    // Efecto de onda en el botón de login (modificado para no interferir con el submit)
-    const authBtn = document.querySelector('.btn-auth');
-    authBtn.addEventListener('click', function(e) {
-        const x = e.clientX - e.target.getBoundingClientRect().left;
-        const y = e.clientY - e.target.getBoundingClientRect().top;
-        
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-        
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 1000);
     });
 });
 </script>

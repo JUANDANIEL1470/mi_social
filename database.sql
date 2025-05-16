@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-05-2025 a las 22:11:03
+-- Tiempo de generación: 16-05-2025 a las 21:54:30
 -- Versión del servidor: 9.1.0
 -- Versión de PHP: 8.3.14
 
@@ -37,16 +37,16 @@ CREATE TABLE IF NOT EXISTS `enlaces` (
   `orden` int DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `enlaces`
 --
 
 INSERT INTO `enlaces` (`id`, `usuario_id`, `titulo`, `url`, `imagen`, `orden`) VALUES
-(5, 2, 'Pinterest', 'https://pinterest.com/prueba', 'pinterest.png', 1),
-(4, 2, 'Instagram', 'https://instagram.com/prueba', 'instagram.png', 0),
-(6, 2, 'Shopify', 'https://www.prueba.com/', 'shopify.png', 2);
+(8, 2, 'Pinterest', 'https://pinterest.com/prueba', 'pinterest.png', 1),
+(7, 2, 'Instagram', 'https://instagram.com/prueba', 'instagram.png', 0),
+(9, 2, 'Shopify', 'https://www.prueba.com/', 'shopify.png', 2);
 
 -- --------------------------------------------------------
 
@@ -115,6 +115,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `avatar` varchar(255) DEFAULT NULL,
   `tema_color` varchar(50) DEFAULT '#3498db',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `token_expiry` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
@@ -124,8 +126,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `username`, `email`, `password`, `nombre_perfil`, `bio`, `avatar`, `tema_color`, `fecha_registro`) VALUES
-(2, 'admin', 'admin@admin.com', '$2y$10$SlcBd4vcKFw6Xf6Tl5OsD.7dIUaLE71JgQUmnUt4FDj/MTZ8rv3Cu', 'PRUEBA', 'PRUEBA AAAAA SSS AASSS AA AAS 1 21| 2 123 2Ñ 123ÑÑ 1Ñ3Ñ12 L3. . ´12 {SDA+{AÑ.S.D .Ñ .´4250I48U21 JI NS DA', 'assets/uploads/avatar_2_1747335787.png', '#ff0000', '2025-05-15 18:20:00');
+INSERT INTO `usuarios` (`id`, `username`, `email`, `password`, `nombre_perfil`, `bio`, `avatar`, `tema_color`, `fecha_registro`, `remember_token`, `token_expiry`) VALUES
+(2, 'admin', 'admin@admin.com', '$2y$10$SlcBd4vcKFw6Xf6Tl5OsD.7dIUaLE71JgQUmnUt4FDj/MTZ8rv3Cu', 'PRUEBA', 'PRUEBA AAAAA SSS AASSS AA AAS 1 21| 2 123 2Ñ 123ÑÑ 1Ñ3Ñ12 L3. . ´12 {SDA+{AÑ.S.D .Ñ .´4250I48U21 JI NS DA', 'assets/uploads/avatar_2_1747432094.png', '#ff0000', '2025-05-15 18:20:00', 'dc4f237416c55abca4235e11d8e6e9b9f90802cc1cb620d2fef3d24ff577c747', '2025-06-15 21:45:29');
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `enlace_id` (`enlace_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `visitas`
@@ -153,7 +155,9 @@ INSERT INTO `visitas` (`id`, `enlace_id`, `ip`, `fecha`) VALUES
 (3, 4, '::1', '2025-05-15 21:41:26'),
 (4, 4, '::1', '2025-05-15 21:41:27'),
 (5, 4, '::1', '2025-05-15 21:41:33'),
-(6, 4, '::1', '2025-05-15 21:41:34');
+(6, 4, '::1', '2025-05-15 21:41:34'),
+(7, 4, '::1', '2025-05-16 19:18:47'),
+(8, 4, '::1', '2025-05-16 19:18:48');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

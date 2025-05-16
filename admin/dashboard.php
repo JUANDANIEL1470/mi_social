@@ -511,14 +511,16 @@ document.addEventListener('DOMContentLoaded', function() {
 .social-presets {
     margin-bottom: 20px;
     padding: 15px;
-    background: #f5f5f5;
+    background: var(--card-bg);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
 .social-presets h4 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: #555;
+    color: var(--text-muted);
 }
 
 .preset-grid {
@@ -532,18 +534,19 @@ document.addEventListener('DOMContentLoaded', function() {
     flex-direction: column;
     align-items: center;
     padding: 15px 10px;
-    background: white;
+    background: var(--item-bg);
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s;
-    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
     text-align: center;
 }
 
 .preset-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: var(--hover-shadow);
     border-color: var(--primary-color);
+    background: var(--item-hover-bg);
 }
 
 .preset-item img {
@@ -551,6 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 32px;
     margin-bottom: 5px;
     object-fit: contain;
+    filter: var(--icon-filter); /* Para ajustar brillo en modo oscuro */
 }
 
 .preset-item span {
@@ -559,11 +563,14 @@ document.addEventListener('DOMContentLoaded', function() {
     color: var(--text-color);
 }
 
-.social-icon-img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    margin-right: 10px;
+.preset-item.selected {
+    background: var(--primary-light);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.preset-item, .social-presets {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .social-icon-select {
@@ -606,6 +613,17 @@ document.addEventListener('DOMContentLoaded', function() {
     padding: 15px;
     background: rgba(255,255,255,0.1);
     border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .preset-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 8px;
+    }
+    
+    .preset-item {
+        padding: 10px 5px;
+    }
 }
 </style>
 
