@@ -1,6 +1,6 @@
 # 🌐 Mi Social - Tu Perfil de Enlaces Centralizado
 
-assets/img/CAP1.png <!-- Puedes reemplazar esto con tu propio banner -->
+<img src="assets/img/CAP1.png">
 
 **Mi Social** es una plataforma web moderna que te permite crear un perfil centralizado con todos tus enlaces importantes en una sola URL. ¡Perfecto para creadores de contenido, influencers y profesionales!
 
